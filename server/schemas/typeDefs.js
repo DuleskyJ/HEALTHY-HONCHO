@@ -25,7 +25,6 @@ const typeDefs = `
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile
-    wellness(name: String): [Wellness]
     wellness(wellnessID: ID!): Wellness
     # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: Profile
@@ -43,7 +42,7 @@ const typeDefs = `
     addHalfHourEx(halfHourExercise: Boolean): Wellness
     addCardio(cardio: Boolean): Wellness
     addWeightlift(weightlift: Boolean): Wellness 
-    addWellness(profileId: ID!, wellness: boolean): Profile
+    addWellness(profileId: ID!, wellness: Boolean): Profile
     removeProfile: Profile
     removeWellness(wellnessID: ID!): Wellness
   }
