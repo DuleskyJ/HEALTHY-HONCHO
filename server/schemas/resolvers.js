@@ -1,14 +1,22 @@
-const { Profile } = require('../models');
+const { Profile, Wellness } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     profiles: async () => {
-      return Profile.find();
+      return Profile.find().populate('wellness');
     },
 
     profile: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId });
+      return Profile.findOne({ _id: profileId }).populate('wellness');
+    },
+
+    wellness: async (parent, { profileId }) => {
+      const params = profileId ? { profileId } : {};
+      return Wellness.find(params).sort({ createdAt: -1 });
+    },
+    wellness: async (parent, { wellnessId }) => {
+      return Wellness.findOne({ _id: wellnessId });
     },
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
@@ -42,40 +50,49 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-
-    // Add a third argument to the resolver to access data in our `context`
-    addSkill: async (parent, { profileId, skill }, context) => {
-      // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
-      if (context.user) {
-        return Profile.findOneAndUpdate(
-          { _id: profileId },
+    addWellness: async (parent, { caloriesBenchmark, ProteinBenchmark, fiberBenchmark, fatsBenchmark, carbohydratesBenchmark, hourExercise, halfHourExcercie, cardio, weightlift }, context) => {
+      if (context.profileId) {
+        const wellness = await Wellness.create({
+          caloriesBenchmark,
+          ProteinBenchmark,
+          fiberBenchmark,
+          fatsBenchmark,
+          carbohydratesBenchmark,
+          hourExercise,
+          halfHourExcercie, 
+          cardio, 
+          weightlift,
+        });
+        await Profile.findOneAndUpdate(
+          {_id: context.profileId._id },
           {
-            $addToSet: { skills: skill },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
+            $addToSet: { wellness: wellness._id } }
         );
+        return wellness;
       }
-      // If user attempts to execute this mutation and isn't logged in, throw an error
       throw AuthenticationError;
+      ('You need to be logged in!');
     },
-    // Set up mutation so a logged in user can only remove their profile and no one else's
+    
     removeProfile: async (parent, args, context) => {
       if (context.user) {
         return Profile.findOneAndDelete({ _id: context.user._id });
       }
       throw AuthenticationError;
     },
-    // Make it so a logged in user can only remove a skill from their own profile
-    removeSkill: async (parent, { skill }, context) => {
+
+    removeWellness: async (parent, { wellnessId }, context) => {
       if (context.user) {
-        return Profile.findOneAndUpdate(
+        const wellness = await Wellness.findOneAndDelete({
+          _id: wellnessId,
+        });
+
+        await Profile.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { skills: skill } },
-          { new: true }
+          { $pull: { wellness: wellness._id } }
         );
+
+        return thought;
       }
       throw AuthenticationError;
     },
