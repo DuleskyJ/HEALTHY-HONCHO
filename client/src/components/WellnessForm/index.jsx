@@ -37,8 +37,8 @@ const WellnessForm = ({ profileId }) => {
       >
         <div className="col-12 col-lg-9">
           <input
-            placeholder="Endorse some skills..."
-            value={skill}
+            placeholder="wellness input"
+            value={wellness}
             className="form-input w-100"
             onChange={(event) => setWellness(event.target.value)}
           />
