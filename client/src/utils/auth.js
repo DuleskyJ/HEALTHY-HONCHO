@@ -1,21 +1,38 @@
-const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
+import decode from 'jwt-decode';
 
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
-        <Header />
-        <div className="container">
-          <Outlet />
-        </div>
-        <Footer />
-      </div>
-    </ApolloProvider>
-  );
+class AuthService {
+  getProfile() {
+    return decode(this.getToken());
+  }
+
+  loggedIn() {
+    const token = this.getToken();
+    return token && !this.isTokenExpired(token) ? true : false;
+  }
+
+  isTokenExpired(token) {
+    const decoded = decode(token);
+    if (decoded.exp < Date.now() / 1000) {
+      localStorage.removeItem('id_token');
+      return true;
+    }
+    return false;
+  }
+
+  getToken() {
+    return localStorage.getItem('id_token');
+  }
+
+  login(idToken) {
+    localStorage.setItem('id_token', idToken);
+    window.location.assign('/');
+  }
+
+  logout() {
+    localStorage.removeItem('id_token');
+    window.location.reload();
+  }
 }
 
-export default App;
+export default new AuthService();
+
