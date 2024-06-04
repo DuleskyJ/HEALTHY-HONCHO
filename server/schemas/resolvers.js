@@ -4,7 +4,7 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     profiles: async () => {
-      return Profile.find().populate('wellness');
+      return Profile.find();
     },
 
     profile: async (parent, { profileId }) => {
@@ -19,12 +19,6 @@ const resolvers = {
       return Wellness.findOne({ _id: wellnessId });
     },
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-    me: async (parent, args, context) => {
-      if (context.user) {
-        return Profile.findOne({ _id: context.user._id });
-      }
-      throw AuthenticationError;
-    },
   },
 
   Mutation: {
@@ -74,28 +68,28 @@ const resolvers = {
       ('You need to be logged in!');
     },
     
-    removeProfile: async (parent, args, context) => {
-      if (context.user) {
-        return Profile.findOneAndDelete({ _id: context.user._id });
-      }
-      throw AuthenticationError;
-    },
+    // removeProfile: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return Profile.findOneAndDelete({ _id: context.user._id });
+    //   }
+    //   throw AuthenticationError;
+    // },
 
-    removeWellness: async (parent, { wellnessId }, context) => {
-      if (context.user) {
-        const wellness = await Wellness.findOneAndDelete({
-          _id: wellnessId,
-        });
+  //   removeWellness: async (parent, { wellnessId }, context) => {
+  //     if (context.user) {
+  //       const wellness = await Wellness.findOneAndDelete({
+  //         _id: wellnessId,
+  //       });
 
-        await Profile.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { wellness: wellness._id } }
-        );
+  //       await Profile.findOneAndUpdate(
+  //         { _id: context.user._id },
+  //         { $pull: { wellness: wellness._id } }
+  //       );
 
-        return thought;
-      }
-      throw AuthenticationError;
-    },
+  //       return thought;
+  //     }
+  //     throw AuthenticationError;
+  //   },
   },
 };
 
