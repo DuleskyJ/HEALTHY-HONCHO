@@ -20,7 +20,7 @@ const WellnessForm = ({ profileId }) => {
         variables: { profileId, wellness },
       });
 
-      setWellness('');
+
     } catch (err) {
       console.error(err);
     }
@@ -37,7 +37,7 @@ const WellnessForm = ({ profileId }) => {
       >
         <div className="col-12 col-lg-9">
           <input
-            placeholder="wellness input"
+            placeholder="Endorse some skills..."
             value={wellness}
             className="form-input w-100"
             onChange={(event) => setWellness(event.target.value)}
