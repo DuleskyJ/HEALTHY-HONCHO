@@ -20,7 +20,7 @@ const WellnessForm = ({ profileId }) => {
         variables: { profileId, wellness },
       });
 
-      setSkill('');
+      setWellness('');
     } catch (err) {
       console.error(err);
     }
