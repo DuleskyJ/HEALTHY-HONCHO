@@ -1,14 +1,14 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_PROFILE = gql `
-query profile ($name: String!) {
-  profile(name: $name) {
-    _id: ID
+query Query($profileId: ID!) {
+  profile(profileId: $profileId) {
+    _id
     name
     email
     password
     wellness {
-      _id 
+      _id
     }
   }
 }
@@ -29,15 +29,5 @@ query getwellness {
     weightlift: Boolean  
   }
 }
-`;
-
-export const QUERY_ME = gql`
-  query me {
-    me {
-      _id
-      name
-      wellness
-    }
-  }
 `;
 
