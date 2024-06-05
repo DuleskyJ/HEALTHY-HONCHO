@@ -1,7 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { QUERY_PROFILE, QUERY_ME} from '../utils/queries';
+import { QUERY_PROFILE} from '../utils/queries';
 
 import Auth from '../utils/auth';
 

@@ -14,16 +14,16 @@ export const ADD_PROFILE = gql`
 export const ADD_WELLNESS = gql `
 mutation addWellness ($profileId: ID!, $wellness: Boolean!) {
   ($profileId: ID!, $wellness: Boolean!) {
-    addCalories(caloriesBenchmark: Boolean): Wellness
-    addProtein(proteinBenchmark: Boolean): Wellness
-    addFiber(fiberBenchmark: Boolean): Wellness
-    addFats(fatbenchmark: Boolean): Wellness
-    addCarbs(carbohydrateBenchmark: Boolean): Wellness
-    addHourEx(hourExercise: Boolean): Wellness
-    addHalfHourEx(halfHourExercise: Boolean): Wellness
-    addCardio(cardio: Boolean): Wellness
-    addWeightlift(weightlift: Boolean): Wellness 
-    addWellness(profileId: ID!, wellness: Boolean): Profile
+    addWellness(
+      caloriesBenchmark: Boolean!,
+      proteinBenchmark: Boolean!,
+      fiberBenchmark: Boolean!,
+      fatsBenchmark: Boolean!,
+      carbohydratesBenchmark: Boolean!,
+      hourExercise: Boolean!,
+      halfHourExercise: Boolean!,
+      cardio: Boolean!,
+      weightlift: Boolean!): Wellness
   }
 }`
 
