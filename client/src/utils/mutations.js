@@ -15,15 +15,15 @@ export const ADD_WELLNESS = gql `
 mutation addWellness ($profileId: ID!, $wellness: Boolean!) {
   ($profileId: ID!, $wellness: Boolean!) {
     addWellness(
-      caloriesBenchmark: Boolean!,
-      proteinBenchmark: Boolean!,
-      fiberBenchmark: Boolean!,
-      fatsBenchmark: Boolean!,
-      carbohydratesBenchmark: Boolean!,
-      hourExercise: Boolean!,
-      halfHourExercise: Boolean!,
-      cardio: Boolean!,
-      weightlift: Boolean!): Wellness
+      caloriesBenchmark: Boolean
+      proteinBenchmark: Boolean
+      fiberBenchmark: Boolean
+      fatsBenchmark: Boolean
+      carbohydratesBenchmark: Boolean
+      hourExercise: Boolean
+      halfHourExercise: Boolean
+      cardio: Boolean
+      weightlift: Boolean): Wellness
   }
 }`
 

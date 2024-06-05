@@ -4,7 +4,7 @@ const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
   await cleanDB('Profile', 'profile');
-  await cleanDB('Wellness', 'wellnes');
+  await cleanDB('Wellness', 'wellness');
 
   
   const wellnessData = await Wellness.insertMany([

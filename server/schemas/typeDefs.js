@@ -35,14 +35,14 @@ const typeDefs = `
     addProfile(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addWellness(
-      caloriesBenchmark: Boolean!,
-      proteinBenchmark: Boolean!,
-      fiberBenchmark: Boolean!,
-      fatsBenchmark: Boolean!,
-      carbohydratesBenchmark: Boolean!,
-      hourExercise: Boolean!,
-      halfHourExercise: Boolean!,
-      cardio: Boolean!,
+      caloriesBenchmark: Boolean!
+      proteinBenchmark: Boolean!
+      fiberBenchmark: Boolean!
+      fatsBenchmark: Boolean!
+      carbohydratesBenchmark: Boolean!
+      hourExercise: Boolean!
+      halfHourExercise: Boolean!
+      cardio: Boolean!
       weightlift: Boolean!): Wellness
   }
 `;
