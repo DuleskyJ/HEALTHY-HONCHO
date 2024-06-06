@@ -6,13 +6,13 @@ const wellnessSchema = new Schema({
     type: Boolean,
     required: false,
   },
-  ProteinBenchmark: {
+  proteinBenchmark: {
     type: Boolean,
     required: false,
   },
   fiberBenchmark: {
-    type: String,
-    required: true,
+    type: Boolean,
+    required: false,
   },
   fatsBenchmark: {
     type: Boolean,
@@ -26,7 +26,7 @@ const wellnessSchema = new Schema({
     type: Boolean,
     required: false,
   },
-  halfHourExcercie: {
+  halfHourExercise: {
     type: Boolean,
     required: false,
   },

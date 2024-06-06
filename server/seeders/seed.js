@@ -11,23 +11,23 @@ db.once('open', async () => {
 
     {   
         caloriesBenchmark: true,
-        ProteinBenchmark: true,
+        proteinBenchmark: true,
         fiberBenchmark: true,
         fatsBenchmark: true,
         carbohydratesBenchmark: true,
         hourExercise: true,
-        halfHourExcercie: true,
+        halfHourExercise: true,
         cardio: true,
         weightlift: true,
     },
     {   
         caloriesBenchmark: true,
-        ProteinBenchmark: true,
+        proteinBenchmark: true,
         fiberBenchmark: true,
         fatsBenchmark: true,
         carbohydratesBenchmark: true,
         hourExercise: true,
-        halfHourExcercie: true,
+        halfHourExercise: true,
         cardio: true,
         weightlift: true,
     }
@@ -39,7 +39,20 @@ db.once('open', async () => {
     name: 'THE honcho',
     email: 'honcho@testmail.com',
     password: 'password',
-    wellness: [wellnessData[0]._id] 
+    wellness: [
+      {
+        _id: [wellnessData[0]._id]
+        // caloriesBenchmark: [wellnessData[0].caloriesBenchmark],
+        // proteinBenchmark: [wellnessData[0].proteinBenchmark],
+        // fiberBenchmark: [wellnessData[0].fiberBenchmark],
+        // fatsBenchmark: [wellnessData[0].fatsBenchmark],
+        // carbohydratesBenchmark: [wellnessData[0].carbohydratesBenchmark],
+        // hourExercise: [wellnessData[0].hourExercise],
+        // halfHourExercise: [wellnessData[0].halfHourExercise],
+        // cardio: [wellnessData[0].cardio],
+        // weightlift: [wellnessData[0].weightlift]
+      }
+    ]
       
     
   });

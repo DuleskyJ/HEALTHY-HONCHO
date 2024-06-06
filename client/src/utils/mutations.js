@@ -13,9 +13,8 @@ export const ADD_PROFILE = gql`
 `;
 export const ADD_WELLNESS = gql `
 mutation addWellness ($profileId: ID!, $wellness: Boolean!) {
-  ($profileId: ID!, $wellness: Boolean!) {
-    addWellness(
-      caloriesBenchmark: Boolean
+  addWellness (profileId: $profileId, wellness: $wellness) {
+    caloriesBenchmark: Boolean
       proteinBenchmark: Boolean
       fiberBenchmark: Boolean
       fatsBenchmark: Boolean
@@ -23,7 +22,7 @@ mutation addWellness ($profileId: ID!, $wellness: Boolean!) {
       hourExercise: Boolean
       halfHourExercise: Boolean
       cardio: Boolean
-      weightlift: Boolean): Wellness
+      weightlift: Boolean
   }
 }`
 
@@ -39,12 +38,5 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const REMOVE_WELLNESS = gql `
-mutation   removeWellness($wellness: Boolean!) {
-  removeWellness(wellness :$wellness) {
-    _id
-    name
-    wellness
-  }
-}
-`;
+
+
