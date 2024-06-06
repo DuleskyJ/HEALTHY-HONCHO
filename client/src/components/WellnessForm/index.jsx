@@ -8,7 +8,7 @@ import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 
 const WellnessForm = ({ profileId }) => {
-  const [wellness, setWellness] = useState('');
+  const [wellness, setWellness] = useState(false);
 
   const [addWellness, { error }] = useMutation(ADD_WELLNESS);
 
@@ -22,7 +22,7 @@ const WellnessForm = ({ profileId }) => {
 
 
     } catch (err) {
-      console.error(err);
+  
     }
   };
 
@@ -37,10 +37,10 @@ const WellnessForm = ({ profileId }) => {
       >
         <div className="col-12 col-lg-9">
           <input
-            placeholder="Endorse some skills..."
-            value={wellness}
+            type='checkbox'
+            checked={wellness}
             className="form-input w-100"
-            onChange={(event) => setWellness(event.target.value)}
+            onChange= {() => setWellness(!wellness)}
           />
         </div>
 
