@@ -32,6 +32,15 @@ query Query {
     password
     wellness {
       _id
+      caloriesBenchmark
+      proteinBenchmark
+      fiberBenchmark
+      fatsBenchmark
+      carbohydratesBenchmark
+      hourExercise
+      halfHourExercise
+      cardio
+      weightlift
     }
   }
 }`;
@@ -39,7 +48,7 @@ query Query {
 export const QUERY_WELLNESS = gql `
 query getWellness {
   wellness {
-    _id: ID
+    _id
     caloriesBenchmark: Boolean
     proteinBenchmark: Boolean
     fiberBenchmark: Boolean

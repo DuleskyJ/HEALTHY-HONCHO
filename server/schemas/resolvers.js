@@ -11,6 +11,16 @@ const resolvers = {
       return Profile.findOne({ _id: profileId }).populate('wellness');
     },
 
+    // profile: async (parent, args, context) => {
+    //   if (context.profile) {
+    //     const user = await Profile.findById(context.profile.profileId).populate('wellness');
+
+    //     return user;
+    //   }
+
+    //   throw AuthenticationError;
+    // },
+
     wellness: async (parent, { profileId }) => {
       const params = profileId ? { profileId } : {};
       return Wellness.find(params).sort({ createdAt: -1 });
