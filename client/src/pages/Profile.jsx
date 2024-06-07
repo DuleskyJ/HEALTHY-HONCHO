@@ -6,7 +6,7 @@ import WellnessForm from "../components/WellnessForm";
 import WellnessCard from "../components/WellnessCard";
 
 
-import { QUERY_PROFILE } from '../utils/queries';
+import { QUERY_ALL} from '../utils/queries';
 
 import Auth from '../utils/auth';
 
@@ -40,8 +40,8 @@ const Profile = () => {
   // const { loading: profileLoading, data } = useQuery(QUERY_PROFILE, { variables: { profileId: profileId } });
   // const profile = data || {};
   // console.log(profile);
-  const { loading, data } = useQuery(QUERY_PROFILE);
-  const profile = data?.profiles || [];
+  const { loading, data } = useQuery(QUERY_ALL);
+  const profile = data?.profiles[0] || [];
 console.log(profile);
 console.log("wellnesslog", profile);
   // const { loading: wellnessLoading, data: wellnessData } = useQuery( QUERY_WELLNESS, {
@@ -61,10 +61,18 @@ console.log("wellnesslog", profile);
 
   if (!profile?.name) {
     return (
+      <div>
+
+     
+      <div>
+      <p>{quote}</p>
+      <p>-{author}</p>
+     </div>
       <h4>
         You need to be logged in to see your profile page. Use the navigation
         links above to sign up or log in!
       </h4>
+      </div>
     );
   }
 
