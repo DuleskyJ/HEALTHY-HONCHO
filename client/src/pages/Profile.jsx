@@ -1,6 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import { useEffect, useState } from "react";
 // import  WellnessForm from "../components/WellnessForm";
 import WellnessForm from "../components/WellnessForm";
 import WellnessCard from "../components/WellnessCard";
@@ -10,7 +10,29 @@ import { QUERY_PROFILE } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
+
+
 const Profile = () => {
+  
+  const [quote, setQuote] = useState();
+  const [author, setAuthor] = useState();
+  useEffect(() => {
+    getQuote();
+  }, []);
+  const getQuote = async () => {
+    fetch(`https://api.quotable.io/quotes/random`, {
+      headers: {
+        "X-Api-Key": "yCMvFpxTzoD1YpyLGRHvfg==uQKwGLSO5PxwmmxN",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("quote", data[0].author);
+        setQuote(data[0].content);
+        setAuthor(data[0].author);
+      });
+  };
+
   const { profileId } = useParams();
 
 
@@ -47,10 +69,14 @@ console.log("wellnesslog", profile);
   }
 
   return (
+    
     <div>
-      <h2 className="card-header">
-        Lets track your wellness for Today!
-      </h2>
+      <h6 className="card-header"> 
+      <div>
+      <p>{quote}</p>
+      <p>-{author}</p>
+    </div>
+      </h6>
       <p>
         User: {profile.name}
       </p>
