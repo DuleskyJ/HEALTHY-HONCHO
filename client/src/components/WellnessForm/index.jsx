@@ -42,6 +42,60 @@ const WellnessForm = ({ profileId }) => {
             className="form-input w-100"
             onChange= {() => setWellness(!wellness)}
           />
+          <input
+            type='checkbox'
+            checked={wellness}
+            className="form-input w-100"
+            onChange= {() => setWellness(!wellness)}
+          />
+          <input
+            type='checkbox'
+            checked={wellness}
+            className="form-input w-100"
+            onChange= {() => setWellness(!wellness)}
+          />
+          <input
+            type='checkbox'
+            checked={wellness}
+            className="form-input w-100"
+            onChange= {() => setWellness(!wellness)}
+          />
+          <input
+            type='checkbox'
+            checked={wellness}
+            className="form-input w-100"
+            onChange= {() => setWellness(!wellness)}
+          />
+          <input
+            type='checkbox'
+            checked={wellness}
+            className="form-input w-100"
+            onChange= {() => setWellness(!wellness)}
+          />
+          <input
+            type='checkbox'
+            checked={wellness}
+            className="form-input w-100"
+            onChange= {() => setWellness(!wellness)}
+          />
+          <input
+            type='checkbox'
+            checked={wellness}
+            className="form-input w-100"
+            onChange= {() => setWellness(!wellness)}
+          />
+          <input
+            type='checkbox'
+            checked={wellness}
+            className="form-input w-100"
+            onChange= {() => setWellness(!wellness)}
+          />
+          <input
+            type='checkbox'
+            checked={wellness}
+            className="form-input w-100"
+            onChange= {() => setWellness(!wellness)}
+          />
         </div>
 
         <div className="col-12 col-lg-3">
