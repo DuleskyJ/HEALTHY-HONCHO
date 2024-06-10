@@ -188,7 +188,7 @@ const WellnessForm = ({ profileId }) => {
           </div>
 
           <div>
-            <button className="card-link btn btn-secondary" type="submit">
+            <button className="btn btn-block btn-outline-dark" type="submit">
               Submit
             </button>
           </div>
