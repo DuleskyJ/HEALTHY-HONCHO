@@ -88,11 +88,12 @@ console.log("wellnesslog", profile);
       <p>
         User: {profile.name}
       </p>
-      <h3>Wellness Data:</h3>
+      <h3>Wellness Data Log:</h3>
       <div>
             {profile.wellness.map((wellness) => (
               <WellnessCard key={wellness._id} wellness={wellness} />
             ))}
+            <h3>Log Your Wellness Activity For Today!</h3>
         </div>
               <WellnessForm />
         <div>
