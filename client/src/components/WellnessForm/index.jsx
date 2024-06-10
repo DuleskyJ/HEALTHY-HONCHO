@@ -9,15 +9,15 @@ import { useMutation } from '@apollo/client';
 
 const WellnessForm = ({ profileId }) => {
   const [wellnessData, setWellnessData] = useState({
-    checkbox1: false,
-    checkbox2: false,
-    checkbox3: false,
-    checkbox4: false,
-    checkbox5: false,
-    checkbox6: false,
-    checkbox7: false,
-    checkbox8: false,
-    checkbox9: false,
+    caloriesBenchmark: false,
+    proteinBenchmark: false,
+    fiberBenchmark: false,
+    fatsBenchmark: false,
+    carbohydratesBenchmark: false,
+    hourExercise: false,
+    halfHourExercise: false,
+    cardio: false,
+    weightlift: false,
 
   });
 
@@ -32,129 +32,181 @@ const WellnessForm = ({ profileId }) => {
     });
   };
 
-    const handleFormSubmit = async (event) => {
-      event.preventDefault();
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
 
-      try {
-        const data = await addWellness({
-          variables: { profileId, wellness: wellnessData },
-        });
-        setWellnessData({
-          checkbox1: false,
-          checkbox2: false,
-          checkbox3: false,
-          checkbox4: false,
-          checkbox5: false,
-          checkbox6: false, 
-          checkbox7: false,
-          checkbox8: false,
-          checkbox9: false, 
+    try {
+      const data = await addWellness({
+        variables: { ...wellnessData },
+      });
+      console.log(data);
+      setWellnessData({
+        caloriesBenchmark: false,
+        proteinBenchmark: false,
+        fiberBenchmark: false,
+        fatsBenchmark: false,
+        carbohydratesBenchmark: false,
+        hourExercise: false,
+        halfHourExercise: false,
+        cardio: false,
+        weightlift: false,
 
-        });
+      });
 
 
-      } catch (err) {
+    } catch (err) {
 
-      }
-    };
-
-    return (
-      <div>
-        <h4></h4>
-
-        {Auth.loggedIn() ? (
-          <form
-            className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
-          >
-            <div className="container col-12 col-lg-9">
-              <input
-                type='checkbox'
-                name='checkbox1'
-                checked={wellnessData.checkbox1}
-                className="form-input w-100 col-6 col-sm-4"
-                onChange={handleCheckboxChange}
-              />
-              <input
-                type='checkbox'
-                name='checkbox2'
-                checked={wellnessData.checkbox2}
-                className="form-input w-100 col-6 col-sm-4"
-                onChange={handleCheckboxChange}
-              />
-              <input
-                type='checkbox'
-                name='checkbox3'
-                checked={wellnessData.checkbox3}
-                className="form-input w-100 col-6 col-sm-4"
-                onChange={handleCheckboxChange}
-              />
-              <input
-                type='checkbox'
-                name='checkbox4'
-                checked={wellnessData.checkbox4}
-                className="form-input w-100 col-6 col-sm-4"
-                onChange={handleCheckboxChange}
-              />
-              <input
-                type='checkbox'
-                name='checkbox5'
-                checked={wellnessData.checkbox5}
-                className="form-input w-100 col-6 col-sm-4"
-                onChange={handleCheckboxChange}
-              />
-              <input
-                type='checkbox'
-                name='checkbox6'
-                checked={wellnessData.checkbox6}
-                className="form-input w-100 col-6 col-sm-4"
-                onChange={handleCheckboxChange}
-              />
-              <input
-                type='checkbox'
-                name='checkbox7'
-                checked={wellnessData.checkbox7}
-                className="form-input w-100 col-6 col-sm-4"
-                onChange={handleCheckboxChange}
-              />
-              <input
-                type='checkbox'
-                name='checkbox8'
-                checked={wellnessData.checkbox8}
-                className="form-input w-100 col-6 col-sm-4"
-                onChange={handleCheckboxChange}
-              />
-              <input
-                type='checkbox'
-                name='checkbox9'
-                checked={wellnessData.checkbox9}
-                className="form-input w-100 col-6 col-sm-4"
-                onChange={handleCheckboxChange}
-              />
-            
-            </div>
-
-            <div>
-              <button className="card-link btn btn-secondary" type="submit">
-                Submit
-              </button>
-            </div>
-            {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
-                {error.message}
-              </div>
-            )}
-          </form>
-        ) : (
-          <p>
-            You need to be logged in to track you wellness journey . Please{' '}
-            <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-          </p>
-        )}
-      </div>
-
-    )
+    }
   };
 
-  export default WellnessForm;
+  return (
+    <div>
+      <h4></h4>
+
+      {Auth.loggedIn() ? (
+        <form
+          className="flex-row justify-center justify-space-between-md align-center"
+          onSubmit={handleFormSubmit}
+        >
+          <div className="container col-12 col-lg-9">
+            <div className="form-check">
+              <input
+                type='checkbox'
+                name='caloriesBenchmark'
+                checked={wellnessData.caloriesBenchmark}
+                className="form-input w-100 col-6 col-sm-4"
+                onChange={handleCheckboxChange}
+              />
+              <label className="form-check-label" htmlFor="caloriesBenchmark">
+                Calories Benchmark
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                type='checkbox'
+                name='proteinBenchmark'
+                checked={wellnessData.proteinBenchmark}
+                className="form-input w-100 col-6 col-sm-4"
+                onChange={handleCheckboxChange}
+              />
+              <label className="form-check-label" htmlFor="proteinBenchmark">
+               Protein Benchmark 
+              </label>
+            </div>
+            <div className="form-check">
+
+              <input
+                type='checkbox'
+                name='fiberBenchmark'
+                checked={wellnessData.fiberBenchmark}
+                className="form-input w-100 col-6 col-sm-4"
+                onChange={handleCheckboxChange}
+              />
+              <label className="form-check-label" htmlFor="fiberBenchmark">
+                Fiber Benchmark
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                type='checkbox'
+                name='fatsBenchmark'
+                checked={wellnessData.fatsBenchmark}
+                className="form-input w-100 col-6 col-sm-4"
+                onChange={handleCheckboxChange}
+              />
+              <label className="form-check-label" htmlFor="fatsBenchmark">
+                Fats Benchmark
+              </label>
+            </div>
+            <div className="form-check">
+
+              <input
+                type='checkbox'
+                name='carbohydratesBenchmark'
+                checked={wellnessData.carbohydratesBenchmark}
+                className="form-input w-100 col-6 col-sm-4"
+                onChange={handleCheckboxChange}
+              />
+              <label className="form-check-label" htmlFor="carbohydratesBenchmark">
+              Carbohydrates Benchmark
+              </label>
+            </div>
+            <div className="form-check">
+
+              <input
+                type='checkbox'
+                name='hourExercise'
+                checked={wellnessData.hourExercise}
+                className="form-input w-100 col-6 col-sm-4"
+                onChange={handleCheckboxChange}
+              />
+              <label className="form-check-label" htmlFor="hourExecrise">
+                Hour Exercise 
+              </label>
+            </div>
+            <div className="form-check">
+
+              <input
+                type='checkbox'
+                name='halfHourExercise'
+                checked={wellnessData.halfHourExercise}
+                className="form-input w-100 col-6 col-sm-4"
+                onChange={handleCheckboxChange}
+              />
+              <label className="form-check-label" htmlFor="halfHourExercise">
+                Half Hour Exercise
+              </label>
+            </div>
+            <div className="form-check">
+
+              <input
+                type='checkbox'
+                name='cardio'
+                checked={wellnessData.cardio}
+                className="form-input w-100 col-6 col-sm-4"
+                onChange={handleCheckboxChange}
+              />
+              <label className="form-check-label" htmlFor="cardio">
+                Cardio
+              </label>
+            </div>
+            <div className="form-check">
+
+              <input
+                type='checkbox'
+                name='weightlift'
+                checked={wellnessData.weightlift}
+                className="form-input w-100 col-6 col-sm-4"
+                onChange={handleCheckboxChange}
+              />
+              <label className="form-check-label" htmlFor="weightlift">
+                Weight Lift
+              </label>
+            </div>
+
+          </div>
+
+          <div>
+            <button className="card-link btn btn-secondary" type="submit">
+              Submit
+            </button>
+          </div>
+          {error && (
+            <div className="col-12 my-3 bg-danger text-white p-3">
+              {error.message}
+            </div>
+          )}
+        </form>
+      ) : (
+        <p>
+          You need to be logged in to track you wellness journey . Please{' '}
+          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+        </p>
+      )}
+    </div>
+
+  )
+};
+
+export default WellnessForm;

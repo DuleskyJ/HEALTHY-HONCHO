@@ -1,12 +1,11 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_PROFILE = gql `
-query Query($profileId: ID!) {
+query profile($profileId: ID!) {
   profile(profileId: $profileId) {
     _id
-    email
     name
-    password
+    email
     wellness {
       _id
       caloriesBenchmark
@@ -18,18 +17,18 @@ query Query($profileId: ID!) {
       halfHourExercise
       cardio
       weightlift
+      createdAt
     }
   }
 }
 `;
 
-export const QUERY_ALL = gql `
-query Query {
-  profiles {
+export const QUERY_ME = gql `
+query Me {
+  me {
     _id
     name
     email
-    password
     wellness {
       _id
       caloriesBenchmark
@@ -41,23 +40,47 @@ query Query {
       halfHourExercise
       cardio
       weightlift
+      createdAt
+    }
+  }
+}`;
+
+export const QUERY_ALL = gql `
+query profiles {
+  profiles {
+    _id
+    name
+    email
+    wellness {
+      _id
+      caloriesBenchmark
+      proteinBenchmark
+      fiberBenchmark
+      fatsBenchmark
+      carbohydratesBenchmark
+      hourExercise
+      halfHourExercise
+      cardio
+      weightlift
+      createdAt
     }
   }
 }`;
 
 export const QUERY_WELLNESS = gql `
-query getWellness {
-  wellness {
+query wellness($wellnessId: ID!) {
+  wellness(wellnessID: $wellnessId) {
     _id
-    caloriesBenchmark: Boolean
-    proteinBenchmark: Boolean
-    fiberBenchmark: Boolean
-    fatsBenchmark: Boolean
-    carbohydratesBenchmark: Boolean
-    hourExercise: Boolean
-    halfHourExercise: Boolean
-    cardio: Boolean
-    weightlift: Boolean  
+    caloriesBenchmark
+    proteinBenchmark
+    fiberBenchmark
+    fatsBenchmark
+    carbohydratesBenchmark
+    hourExercise
+    halfHourExercise
+    cardio
+    weightlift
+    createdAt
   }
 }
 `;

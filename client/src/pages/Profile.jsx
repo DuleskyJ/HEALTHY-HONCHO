@@ -6,7 +6,7 @@ import WellnessForm from "../components/WellnessForm";
 import WellnessCard from "../components/WellnessCard";
 
 
-import { QUERY_ALL} from '../utils/queries';
+import { QUERY_ME} from '../utils/queries';
 
 import Auth from '../utils/auth';
 
@@ -40,8 +40,8 @@ const Profile = () => {
   // const { loading: profileLoading, data } = useQuery(QUERY_PROFILE, { variables: { profileId: profileId } });
   // const profile = data || {};
   // console.log(profile);
-  const { loading, data } = useQuery(QUERY_ALL);
-  const profile = data?.profiles[0] || [];
+  const { loading, data } = useQuery(QUERY_ME);
+  const profile = data?.me || {};
 console.log(profile);
 console.log("wellnesslog", profile);
   // const { loading: wellnessLoading, data: wellnessData } = useQuery( QUERY_WELLNESS, {

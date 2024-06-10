@@ -11,15 +11,16 @@ const resolvers = {
       return Profile.findOne({ _id: profileId }).populate('wellness');
     },
 
-    // profile: async (parent, args, context) => {
-    //   if (context.profile) {
-    //     const user = await Profile.findById(context.profile.profileId).populate('wellness');
+    me: async (parent, args, context) => {
+      console.log(context.user);
+      if (context.user) {
+        const profile = await Profile.findById(context.user._id).populate('wellness');
 
-    //     return user;
-    //   }
+        return profile;
+      }
 
-    //   throw AuthenticationError;
-    // },
+      throw AuthenticationError;
+    },
 
     wellness: async (parent, { profileId }) => {
       const params = profileId ? { profileId } : {};
@@ -52,10 +53,12 @@ const resolvers = {
       }
 
       const token = signToken(profile);
+      console.log(profile);
+      console.log(token);
       return { token, profile };
     },
     addWellness: async (parent, { caloriesBenchmark, ProteinBenchmark, fiberBenchmark, fatsBenchmark, carbohydratesBenchmark, hourExercise, halfHourExcercie, cardio, weightlift }, context) => {
-      if (context.profileId) {
+      if (context.user) {
         const wellness = await Wellness.create({
           caloriesBenchmark,
           ProteinBenchmark,
@@ -68,7 +71,7 @@ const resolvers = {
           weightlift,
         });
         await Profile.findOneAndUpdate(
-          {_id: context.profileId._id },
+          {_id: context.user._id },
           {
             $addToSet: { wellness: wellness._id } }
         );

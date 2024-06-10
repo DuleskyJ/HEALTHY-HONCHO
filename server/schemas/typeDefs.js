@@ -17,6 +17,7 @@ const typeDefs = `
     halfHourExercise: Boolean
     cardio: Boolean
     weightlift: Boolean  
+    createdAt: String
   }
   type Auth {
     token: ID!
@@ -27,7 +28,7 @@ const typeDefs = `
     profiles: [Profile]!
     profile(profileId: ID!): Profile
     wellness(wellnessID: ID!): Wellness
-
+    me: Profile
   
   }
 

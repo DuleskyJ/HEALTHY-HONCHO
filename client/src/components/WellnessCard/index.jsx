@@ -5,7 +5,7 @@ function WellnessCard ({wellness}) {
 
   return (
     <div>
-      <h3>{wellness._id}</h3>
+      <h3>{wellness.createdAt}</h3>
       <h3>{wellness.caloriesBenchmark}</h3>
       <h3> {wellness.proteinBenchmark}</h3>
       <h3> {wellness.fiberBenchmark}</h3>
