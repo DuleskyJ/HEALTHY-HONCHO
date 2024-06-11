@@ -1,6 +1,5 @@
-// Add polyfills
 require('@babel/polyfill');
-require('object.values/shim')();
+require('object.values').shim();
 
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
