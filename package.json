@@ -1,5 +1,5 @@
 {
-  "name": "HealthyHoncho",
+  "name": "healthyhoncho",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -26,3 +26,4 @@
     "object.values": "^1.2.0"
   }
 }
+
