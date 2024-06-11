@@ -12,10 +12,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "^2.18.2",
+    "bcrypt": "^5.1.1",
     "express": "^4.17.1",
-    "mongoose": "^5.10.9",
     "graphql": "^15.4.0",
-    "apollo-server-express": "^2.18.2"
+    "mongoose": "^5.10.9"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
