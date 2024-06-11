@@ -20,5 +20,9 @@
   "engines": {
     "node": "16.x",
     "npm": "7.x"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "object.values": "^1.2.0"
   }
 }
