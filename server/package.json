@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "apollo-server-express": "^2.25.2",
     "bcrypt": "^5.1.1",
     "express": "^4.17.1",
