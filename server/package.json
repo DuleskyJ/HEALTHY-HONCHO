@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
+    "postinstall": "npm rebuild bcrypt --build-from-source",
     "start": "node server.js",
     "watch": "nodemon",
     "seed": "node seeders/seed.js"
