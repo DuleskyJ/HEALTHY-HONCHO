@@ -1,7 +1,7 @@
 {
   "name": "healthyhoncho",
   "version": "1.0.0",
-  "description": "",
+  "description": "Stay a Healthy Honcho",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
@@ -12,6 +12,12 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
+  
+  "engines": {
+    "node": "18.x",
+    "npm": "7.x"
+  },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -27,9 +33,5 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
-  },
-  "engines": {
-    "node": "18.x",
-    "npm": "7.x"
   }
 }
