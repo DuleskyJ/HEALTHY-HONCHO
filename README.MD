@@ -9,10 +9,6 @@
   ## Deployed Application URL
   
   https://github.com/DuleskyJ/HEALTHYHONCHO
-  
-
-  ## Screenshot
-  ![alt-text]()
 
   ## Table of Contents
 
