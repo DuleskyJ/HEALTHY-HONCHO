@@ -1,18 +1,36 @@
 {
-  "name": "Healthy-Honcho",
+  "name": "healthyhoncho",
   "version": "1.0.0",
-  "description": "",
+  "description": "Stay a Healthy Honcho",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
+    "postinstall": "cd server && npm install && cd ../client && npm install && cd ..",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
+  
+  "engines": {
+    "node": "18.x",
+    "npm": "7.x"
+  },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.10.4",
+    "@babel/polyfill": "^7.12.1",
+    "apollo-server-express": "^3.13.0",
+    "express": "^4.17.1",
+    "graphql": "^16.8.1",
+    "mongoose": "^5.13.13",
+    "object.values": "^1.2.0",
+    "path": "^0.12.7"
+  },
   "devDependencies": {
     "concurrently": "^8.2.0"
   }

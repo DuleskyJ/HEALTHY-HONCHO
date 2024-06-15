@@ -1,27 +1,34 @@
 {
-  "name": "mern-server",
+  "name": "healthy-honcho-server",
   "version": "1.0.0",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon",
+    "watch": "nodemon server.js",
     "seed": "node seeders/seed.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/server": "^4.7.1",
-    "apollo-server-express": "^3.6.2",
-    "bcrypt": "^4.0.1",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "graphql": "^16.6.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^8.4.0"
+    "@babel/polyfill": "^7.12.1",
+    "apollo-server-core": "^2.25.2",
+    "apollo-server-env": "^3.0.0",
+    "apollo-server-express": "^2.25.2",
+    "bcrypt": "^5.1.1",
+    "express": "^4.17.1",
+    "graphql": "^15.8.0",
+    "mongodb": "^4.1.0",
+    "mongoose": "^5.10.9",
+    "object.values": "^1.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.4"
   },
-  "description": ""
+
+  "engines": {
+    "node": "18.x"
+  }
+  
 }
